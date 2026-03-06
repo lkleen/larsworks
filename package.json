@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node scripts/generate-index.mjs && ng serve",
+    "prebuild": "node scripts/generate-index.mjs",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
     "serve:ssr:larsworks": "node dist/larsworks/server/server.mjs",
     "lint": "ng lint",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "prepare": "husky"
   },
   "private": true,

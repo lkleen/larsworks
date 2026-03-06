@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+// Global styles — imports are order-sensitive: theme tokens must come first.
+@use 'styles/theme' as *;
+@use 'styles/typography' as *;
+@use 'styles/layout' as *;
