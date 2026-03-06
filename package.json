@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "serve:ssr:larsworks": "node dist/larsworks/server/server.mjs",
     "lint": "ng lint",
     "prepare": "husky"
@@ -27,6 +28,15 @@
     "ngx-markdown": "^21.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
+  },
+  "lint-staged": {
+    "*.{ts,html}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{scss,css,json,md}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "@angular/build": "^21.2.1",
