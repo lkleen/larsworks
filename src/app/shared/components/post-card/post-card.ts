@@ -24,7 +24,6 @@ import { BlogPost } from '../../../core/models/blog-post.model';
       </ul>
     </article>
   `,
-  styleUrl: './post-card.scss',
 })
 export class PostCardComponent {
   post = input.required<BlogPost>();

@@ -22,7 +22,6 @@ import { ConsentService } from '../../../core/services/consent';
       </nav>
     </footer>
   `,
-  styleUrl: './footer.scss',
 })
 export class FooterComponent {
   protected consent = inject(ConsentService);

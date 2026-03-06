@@ -17,7 +17,6 @@ import { AnalyticsService } from './core/services/analytics';
       <app-cookie-banner />
     </div>
   `,
-  styleUrl: './app.scss',
 })
 export class App {
   private readonly router = inject(Router);

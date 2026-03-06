@@ -25,7 +25,6 @@ import { ConsentService } from '../../../core/services/consent';
       </div>
     }
   `,
-  styleUrl: './cookie-banner.scss',
 })
 export class CookieBannerComponent {
   protected consent = inject(ConsentService);

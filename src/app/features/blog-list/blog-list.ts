@@ -17,7 +17,6 @@ import { PostCardComponent } from '../../shared/components/post-card/post-card';
       }
     </main>
   `,
-  styleUrl: './blog-list.scss',
 })
 export class BlogListComponent {
   private readonly blogService = inject(BlogService);

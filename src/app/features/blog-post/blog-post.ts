@@ -30,7 +30,6 @@ import matter from 'gray-matter';
       </article>
     }
   `,
-  styleUrl: './blog-post.scss',
 })
 export class BlogPostComponent {
   private readonly route = inject(ActivatedRoute);

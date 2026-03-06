@@ -14,7 +14,6 @@ import { environment } from '../../../../environments/environment';
       <a [href]="twitterUrl()" target="_blank" rel="noopener" i18n="@@social.twitter">Share on X</a>
     </div>
   `,
-  styleUrl: './social-share.scss',
 })
 export class SocialShareComponent {
   post = input.required<BlogPost>();
