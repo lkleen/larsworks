@@ -1,12 +1,31 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
+import { HeaderComponent } from './shared/components/header/header';
+import { FooterComponent } from './shared/components/footer/footer';
+import { CookieBannerComponent } from './shared/components/cookie-banner/cookie-banner';
+import { AnalyticsService } from './core/services/analytics';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, CookieBannerComponent],
+  template: `
+    <div class="page">
+      <app-header />
+      <router-outlet />
+      <app-footer />
+      <app-cookie-banner />
+    </div>
+  `,
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('larsworks');
+  private readonly router = inject(Router);
+  private readonly analytics = inject(AnalyticsService);
+
+  constructor() {
+    this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((e) => this.analytics.pageView(e.urlAfterRedirects));
+  }
 }

@@ -1,59 +1,61 @@
-# Larsworks
+# larsworks
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+Personal website for Lars Kleen — software development blog, built with Angular 17+, SSR, and Markdown. Future sections: portfolio, contact, booking.
 
-## Development server
+**Live:** https://larsworks.de
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Prerequisites
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- [nvm](https://github.com/nvm-sh/nvm) (recommended)
+- Node.js (version pinned in `.nvmrc`)
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Setup
 
 ```bash
-ng generate component component-name
+nvm use
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Development
 
 ```bash
-ng generate --help
+npm start         # generate post index + start SSR dev server at localhost:4200
 ```
 
-## Building
+After adding or editing a Markdown post in `src/assets/blog/en/`, re-run `npm start`
+to regenerate `index.json`.
 
-To build the project run:
+## Scripts
 
-```bash
-ng build
-```
+| Command              | Description                            |
+| -------------------- | -------------------------------------- |
+| `npm start`          | Generate index + start dev server      |
+| `npm run build`      | Production build (also runs index gen) |
+| `npm test`           | Run Jest unit tests                    |
+| `npm run test:watch` | Jest in watch mode                     |
+| `npm run lint`       | ESLint                                 |
+| `npm run format`     | Prettier (writes in place)             |
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Deployment
 
-## Running unit tests
+Push to `main` — Vercel deploys automatically to https://larsworks.de.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Adding a blog post
 
-```bash
-ng test
-```
+1. Create `src/assets/blog/en/my-post-slug.md`
+2. Add YAML frontmatter (see architecture doc for required fields)
+3. Run `npm start` to pick up the new post locally
+4. Push to `main` to publish
 
-## Running end-to-end tests
+## Adding German (i18n)
 
-For end-to-end (e2e) testing, run:
+See the architecture blueprint for the full checklist.
 
-```bash
-ng e2e
-```
+## Before going live
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [ ] Fill `src/app/features/impressum/` with real Impressum content
+- [ ] Fill `src/app/features/datenschutz/` with generated Datenschutzerklärung (use erecht24.de)
+- [ ] Accept Vercel DPA: Vercel Dashboard → Settings → Legal
+- [ ] Verify cookie consent banner works correctly

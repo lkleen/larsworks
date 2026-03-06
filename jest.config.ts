@@ -5,6 +5,7 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/src/**/*.spec.ts'],
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|ngx-markdown|marked)'],
   collectCoverageFrom: ['src/app/**/*.ts', '!src/app/**/*.module.ts'],
   coverageReporters: ['text-summary', 'lcov'],
 };
