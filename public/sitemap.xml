@@ -3,6 +3,10 @@
   <url><loc>http://localhost:4200/</loc></url>
   <url><loc>http://localhost:4200/about</loc></url>
   <url>
+    <loc>http://localhost:4200/posts/angular-signals-practical-guide</loc>
+    <lastmod>2026-03-09</lastmod>
+  </url>
+  <url>
     <loc>http://localhost:4200/posts/hello-world</loc>
     <lastmod>2026-03-06</lastmod>
   </url>
