@@ -6,7 +6,6 @@ import { SeoService } from '../../core/services/seo';
 import { SocialShareComponent } from '../../shared/components/social-share/social-share';
 import { BlogPost } from '../../core/models/blog-post.model';
 import { switchMap, tap } from 'rxjs';
-import matter from 'gray-matter';
 
 @Component({
   selector: 'app-blog-post',
@@ -26,16 +25,9 @@ export class BlogPostComponent {
     switchMap((params) => {
       const slug = params.get('slug')!;
       return this.blogService.getPost(slug).pipe(
-        tap((raw) => {
-          const { data, content } = matter(raw);
-          const wordCount = raw.split(/\s+/).length;
-          const post: BlogPost = {
-            ...(data as Omit<BlogPost, 'readingTime'>),
-            readingTime: Math.ceil(wordCount / 200),
-            content,
-          };
+        tap((post) => {
           this.post.set(post);
-          this.markdownContent.set(content);
+          this.markdownContent.set(post.content ?? null);
           this.seoService.setPostMeta(post);
         }),
       );
@@ -43,7 +35,6 @@ export class BlogPostComponent {
   );
 
   constructor() {
-    // Subscribe to trigger the pipeline
     this.content$.subscribe();
   }
 }

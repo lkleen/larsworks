@@ -8,6 +8,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { definePreset } from '@primeuix/themes';
+import { provideMarkdown } from 'ngx-markdown';
 
 const AppPreset = definePreset(Aura, {
   semantic: {
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withFetch()),
     provideClientHydration(withEventReplay()),
+    provideMarkdown(),
     providePrimeNG({
       theme: {
         preset: AppPreset,
