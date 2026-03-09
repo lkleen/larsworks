@@ -19,6 +19,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+*.log
 
 # Visual Studio Code
 .vscode/*
@@ -42,3 +43,4 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+.vercel

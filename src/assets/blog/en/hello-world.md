@@ -16,4 +16,4 @@ This is the first post — a placeholder to verify that the blog pipeline works 
 
 Thoughts on software development: architecture decisions, Angular, TypeScript, developer experience, and the occasional deep dive into something that caught my attention.
 
-Stay tuned.
+Stay tuned. When you can read this, deployment works :)
