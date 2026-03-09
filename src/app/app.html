@@ -1,6 +1,10 @@
-<div class="page">
+<div class="min-h-screen flex flex-column">
   <app-header />
-  <router-outlet />
+  <main class="flex-1 p-4">
+    <div class="max-w-screen-lg mx-auto">
+      <router-outlet />
+    </div>
+  </main>
   <app-footer />
   <app-cookie-banner />
 </div>

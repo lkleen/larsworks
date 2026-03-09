@@ -1,5 +1,35 @@
-// Global styles — imports are order-sensitive: theme tokens must come first.
-@use 'styles/theme' as *;
-@use 'styles/typography' as *;
-@use 'styles/layout' as *;
-@use 'styles/components' as *;
+// Global styles — PrimeNG theming handles design tokens, typography, and layout.
+// Only project-level overrides go here.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Markdown content styling (for blog posts rendered via ngx-markdown)
+.markdown-content {
+  pre {
+    border-radius: var(--p-content-border-radius);
+    overflow-x: auto;
+    padding: 1rem;
+  }
+
+  code {
+    font-size: 0.9em;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

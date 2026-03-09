@@ -7,22 +7,37 @@ import { ConsentService } from '../../../core/services/consent';
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <footer class="site-footer">
-      <nav class="container" aria-label="Legal">
-        <a routerLink="/impressum" i18n="@@footer.impressum">Impressum</a>
-        <a routerLink="/datenschutz" i18n="@@footer.datenschutz">Datenschutz</a>
+    <footer class="surface-ground py-4 mt-auto">
+      <nav class="flex justify-center align-items-center gap-4 flex-wrap" aria-label="Legal">
+        <a
+          routerLink="/impressum"
+          class="text-color-secondary no-underline hover:text-primary"
+          i18n="@@footer.impressum"
+          >Impressum</a
+        >
+        <a
+          routerLink="/datenschutz"
+          class="text-color-secondary no-underline hover:text-primary"
+          i18n="@@footer.datenschutz"
+          >Datenschutz</a
+        >
         <a
           (click)="consent.revoke()"
           (keydown.enter)="consent.revoke()"
           role="button"
           tabindex="0"
+          class="text-color-secondary no-underline hover:text-primary cursor-pointer"
           i18n="@@footer.cookiePreferences"
           >Cookie-Einstellungen</a
         >
       </nav>
+      <p class="text-center text-color-secondary text-sm mt-2 mb-0">
+        &copy; {{ currentYear }} larsworks
+      </p>
     </footer>
   `,
 })
 export class FooterComponent {
   protected consent = inject(ConsentService);
+  protected currentYear = new Date().getFullYear();
 }

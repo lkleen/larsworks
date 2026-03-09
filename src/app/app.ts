@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { HeaderComponent } from './shared/components/header/header';
@@ -9,10 +9,15 @@ import { AnalyticsService } from './core/services/analytics';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CookieBannerComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="page">
+    <div class="min-h-screen flex flex-column">
       <app-header />
-      <router-outlet />
+      <main class="flex-1 p-4">
+        <div class="max-w-screen-lg mx-auto">
+          <router-outlet />
+        </div>
+      </main>
       <app-footer />
       <app-cookie-banner />
     </div>
