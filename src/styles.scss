@@ -28,6 +28,25 @@
   --tracking-tight: -0.02em;
   --tracking-normal: 0em;
   --tracking-wide: 0.04em;
+
+  // Layout
+  --layout-max-width: 48rem; // ~768px — comfortable reading column
+  --layout-padding-x: 1.5rem; // horizontal gutter on all breakpoints
+}
+
+// ─── Layout container ────────────────────────────────────────────────────────
+// Single utility used by header inner, main, footer inner — keeps everything
+// in the same column.
+.layout-container {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin-inline: auto;
+  padding-inline: var(--layout-padding-x);
+}
+
+// Page-level vertical rhythm
+.page-content {
+  padding-block: 2rem;
 }
 
 // ─── Reset & base ────────────────────────────────────────────────────────────

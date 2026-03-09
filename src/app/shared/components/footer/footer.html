@@ -1,28 +1,28 @@
-<footer class="surface-ground py-4 mt-auto">
-  <nav class="flex justify-center align-items-center gap-4 flex-wrap" aria-label="Legal">
-    <a
-      routerLink="/impressum"
-      class="text-color-secondary no-underline hover:text-primary"
-      i18n="@@footer.impressum"
-      >Impressum</a
-    >
-    <a
-      routerLink="/datenschutz"
-      class="text-color-secondary no-underline hover:text-primary"
-      i18n="@@footer.datenschutz"
-      >Datenschutz</a
-    >
-    <a
-      (click)="consent.revoke()"
-      (keydown.enter)="consent.revoke()"
-      role="button"
-      tabindex="0"
-      class="text-color-secondary no-underline hover:text-primary cursor-pointer"
-      i18n="@@footer.cookiePreferences"
-      >Cookie-Einstellungen</a
-    >
-  </nav>
-  <p class="text-center text-color-secondary text-sm mt-2 mb-0">
-    &copy; {{ currentYear }} larsworks
-  </p>
+<footer class="surface-ground mt-auto">
+  <div class="layout-container py-4 flex flex-column align-items-center gap-2">
+    <nav class="flex align-items-center gap-4 flex-wrap" aria-label="Legal">
+      <a
+        routerLink="/impressum"
+        class="text-color-secondary no-underline hover:text-primary"
+        i18n="@@footer.impressum"
+        >Impressum</a
+      >
+      <a
+        routerLink="/datenschutz"
+        class="text-color-secondary no-underline hover:text-primary"
+        i18n="@@footer.datenschutz"
+        >Datenschutz</a
+      >
+      <a
+        (click)="consent.revoke()"
+        (keydown.enter)="consent.revoke()"
+        role="button"
+        tabindex="0"
+        class="text-color-secondary no-underline hover:text-primary cursor-pointer"
+        i18n="@@footer.cookiePreferences"
+        >Cookie-Einstellungen</a
+      >
+    </nav>
+    <p class="text-color-secondary text-sm m-0">&copy; {{ currentYear }} larsworks</p>
+  </div>
 </footer>
