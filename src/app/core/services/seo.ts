@@ -12,7 +12,7 @@ export class SeoService {
   setPostMeta(post: BlogPost): void {
     const url = `${environment.blogBaseUrl}/posts/${post.slug}`;
 
-    this.title.setTitle(`${post.title} | larsworks`);
+    this.title.setTitle(`${post.title} | Lars Kleen`);
 
     this.meta.updateTag({ name: 'description', content: post.excerpt });
 

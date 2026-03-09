@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <title>Lars Kleen</title>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- zinc-200: darker than surface-ground (zinc-50/#fafafa) -->
+  <rect width="32" height="32" rx="8" fill="#e4e4e7"/>
+
+  <!-- zinc-400: between zinc-200 background and white mark -->
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7.5"
+        stroke="#a1a1aa" stroke-width="1" fill="none"/>
+
+  <g filter="url(#shadow)" fill="#18181b">
+    <!-- L — uppercase: tall stem + horizontal foot spanning full width -->
+    <rect x="5" y="7" width="3.5" height="17" rx="1.25"/>
+    <!-- horizontal base of L, extends under the W -->
+    <rect x="5" y="22" width="22" height="2" rx="1"/>
+
+    <!-- K — constructed from three paths: vertical stem, upper diagonal arm, lower diagonal arm -->
+    <!-- K vertical stem -->
+    <rect x="13" y="7" width="3" height="15" rx="1"/>
+    <!-- K upper arm: diagonal from stem mid (13+3=16, y=15) to top-right (27, 7) -->
+    <path d="M16 15 L16 10 L27 7 L25 9.5 Z"/>
+    <!-- K lower arm: diagonal from stem mid (16, y=15) to bottom-right (27, 22) -->
+    <path d="M16 15 L16 20 L27 22 L25 19.5 Z"/>
+  </g>
+</svg>
