@@ -4,32 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-impressum',
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <main class="container page-content">
-      <h1>Impressum</h1>
-
-      <h2>Angaben gemäß § 5 TMG</h2>
-      <p>
-        <!-- TODO: Replace with your full legal name and address -->
-        Lars Kleen<br />
-        [Straße und Hausnummer]<br />
-        [PLZ] [Stadt]<br />
-        Deutschland
-      </p>
-
-      <h2>Kontakt</h2>
-      <p>
-        <!-- TODO: Replace with your contact details -->
-        E-Mail: [ihre&#64;email.de]<br />
-        Telefon: [+49 ...]
-      </p>
-
-      <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-      <p>
-        Lars Kleen<br />
-        [Adresse wie oben]
-      </p>
-    </main>
-  `,
+  templateUrl: './impressum.html',
 })
 export class ImpressumComponent {}

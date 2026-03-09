@@ -9,30 +9,7 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-header',
   imports: [Menubar, Button],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <p-menubar [model]="menuItems">
-      <ng-template #start>
-        <span
-          class="font-bold text-xl cursor-pointer"
-          (click)="navigateHome()"
-          (keydown.enter)="navigateHome()"
-          tabindex="0"
-          role="link"
-        >
-          larsworks
-        </span>
-      </ng-template>
-      <ng-template #end>
-        <p-button
-          [icon]="darkMode() ? 'pi pi-sun' : 'pi pi-moon'"
-          [rounded]="true"
-          [text]="true"
-          (onClick)="toggleTheme()"
-          [attr.aria-label]="darkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
-        />
-      </ng-template>
-    </p-menubar>
-  `,
+  templateUrl: './header.html',
 })
 export class HeaderComponent {
   private readonly router = inject(Router);

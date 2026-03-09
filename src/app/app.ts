@@ -10,18 +10,7 @@ import { AnalyticsService } from './core/services/analytics';
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CookieBannerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <div class="min-h-screen flex flex-column">
-      <app-header />
-      <main class="flex-1 p-4">
-        <div class="max-w-screen-lg mx-auto">
-          <router-outlet />
-        </div>
-      </main>
-      <app-footer />
-      <app-cookie-banner />
-    </div>
-  `,
+  templateUrl: './app.html',
 })
 export class App {
   private readonly router = inject(Router);

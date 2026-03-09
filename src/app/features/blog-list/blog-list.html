@@ -1,1 +1,8 @@
-<p>blog-list works!</p>
+<main class="container page-content">
+  <h1 i18n="@@home.title">Latest Posts</h1>
+  @if (posts$ | async; as posts) {
+    @for (post of posts; track post.slug) {
+      <app-post-card [post]="post" />
+    }
+  }
+</main>

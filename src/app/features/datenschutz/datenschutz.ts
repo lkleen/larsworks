@@ -4,18 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-datenschutz',
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <main class="container page-content">
-      <h1>Datenschutzerklärung</h1>
-
-      <!-- TODO: Generate full text at erecht24.de or datenschutz-generator.de -->
-      <!-- Must cover: Verantwortlicher, Hosting (Vercel), GA4, Giscus/GitHub,
-           Betroffenenrechte Art. 15–21 DSGVO, Beschwerderecht, SSL/TLS -->
-
-      <p>
-        <em>Diese Seite wird derzeit aktualisiert. Bitte schauen Sie später wieder vorbei.</em>
-      </p>
-    </main>
-  `,
+  templateUrl: './datenschutz.html',
 })
 export class DatenschutzComponent {}

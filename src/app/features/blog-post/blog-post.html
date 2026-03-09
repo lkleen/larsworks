@@ -1,1 +1,16 @@
-<p>blog-post works!</p>
+@if (post(); as post) {
+  <article class="container page-content">
+    <header>
+      <h1>{{ post.title }}</h1>
+      <div class="post-meta">
+        <time [attr.datetime]="post.date">{{ post.date }}</time>
+        <span>&middot;</span>
+        <span>{{ post.readingTime }} min read</span>
+      </div>
+    </header>
+    @if (markdownContent(); as content) {
+      <markdown [data]="content" />
+    }
+    <app-social-share [post]="post" />
+  </article>
+}

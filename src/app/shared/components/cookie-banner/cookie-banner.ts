@@ -7,35 +7,7 @@ import { ConsentService } from '../../../core/services/consent';
   selector: 'app-cookie-banner',
   imports: [RouterLink, Button],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    @if (consent.isPending) {
-      <div
-        class="fixed bottom-0 left-0 right-0 surface-overlay shadow-4 p-4 z-5"
-        role="dialog"
-        aria-label="Cookie consent"
-      >
-        <div
-          class="flex flex-column md:flex-row align-items-center justify-content-between gap-3 max-w-screen-lg mx-auto"
-        >
-          <p class="m-0 text-color-secondary" i18n="@@cookie.message">
-            This site uses Google Analytics to understand how readers find and use content. No data
-            is collected without your consent.
-            <a routerLink="/datenschutz" class="text-primary">Datenschutzerklärung</a>
-          </p>
-          <div class="flex gap-2 flex-shrink-0">
-            <p-button
-              label="Decline"
-              [outlined]="true"
-              severity="secondary"
-              (onClick)="decline()"
-              i18n-label="@@cookie.decline"
-            />
-            <p-button label="Accept analytics" (onClick)="accept()" i18n-label="@@cookie.accept" />
-          </div>
-        </div>
-      </div>
-    }
-  `,
+  templateUrl: './cookie-banner.html',
 })
 export class CookieBannerComponent {
   protected consent = inject(ConsentService);

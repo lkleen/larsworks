@@ -6,14 +6,7 @@ import { environment } from '../../../../environments/environment';
   selector: 'app-social-share',
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <div class="social-share" aria-label="Share this post">
-      <a [href]="linkedinUrl()" target="_blank" rel="noopener" i18n="@@social.linkedin"
-        >Share on LinkedIn</a
-      >
-      <a [href]="twitterUrl()" target="_blank" rel="noopener" i18n="@@social.twitter">Share on X</a>
-    </div>
-  `,
+  templateUrl: './social-share.html',
 })
 export class SocialShareComponent {
   post = input.required<BlogPost>();

@@ -4,18 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-about',
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <main class="container page-content">
-      <h1 i18n="@@about.title">About</h1>
-      <p i18n="@@about.intro">
-        Hi, I'm Lars Kleen — a software developer based in Germany. I write about software
-        architecture, Angular, TypeScript, and developer experience.
-      </p>
-      <p i18n="@@about.more">
-        This site is built with Angular, rendered server-side for fast first paint and proper social
-        sharing previews, and deployed on Vercel. All content lives in Markdown, tracked in Git.
-      </p>
-    </main>
-  `,
+  templateUrl: './about.html',
 })
 export class AboutComponent {}

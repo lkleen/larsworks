@@ -12,24 +12,7 @@ import matter from 'gray-matter';
   selector: 'app-blog-post',
   imports: [MarkdownComponent, SocialShareComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    @if (post(); as post) {
-      <article class="container page-content">
-        <header>
-          <h1>{{ post.title }}</h1>
-          <div class="post-meta">
-            <time [attr.datetime]="post.date">{{ post.date }}</time>
-            <span>&middot;</span>
-            <span>{{ post.readingTime }} min read</span>
-          </div>
-        </header>
-        @if (markdownContent(); as content) {
-          <markdown [data]="content" />
-        }
-        <app-social-share [post]="post" />
-      </article>
-    }
-  `,
+  templateUrl: './blog-post.html',
 })
 export class BlogPostComponent {
   private readonly route = inject(ActivatedRoute);

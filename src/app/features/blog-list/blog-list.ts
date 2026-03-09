@@ -7,16 +7,7 @@ import { PostCardComponent } from '../../shared/components/post-card/post-card';
   selector: 'app-blog-list',
   imports: [AsyncPipe, PostCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <main class="container page-content">
-      <h1 i18n="@@home.title">Latest Posts</h1>
-      @if (posts$ | async; as posts) {
-        @for (post of posts; track post.slug) {
-          <app-post-card [post]="post" />
-        }
-      }
-    </main>
-  `,
+  templateUrl: './blog-list.html',
 })
 export class BlogListComponent {
   private readonly blogService = inject(BlogService);
