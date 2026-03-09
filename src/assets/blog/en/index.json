@@ -1,5 +1,15 @@
 [
   {
+    "title": "Angular Signals: A Practical Guide",
+    "slug": "angular-signals-practical-guide",
+    "date": "2026-03-09",
+    "author": "Lars Kleen",
+    "lang": "en",
+    "tags": ["angular", "signals", "state-management"],
+    "excerpt": "Signals are Angular's new reactive primitive — simpler than RxJS for local state, and deeply integrated with change detection. Here is how I use them in practice.",
+    "readingTime": 3
+  },
+  {
     "title": "Hello World",
     "slug": "hello-world",
     "date": "2026-03-06",
