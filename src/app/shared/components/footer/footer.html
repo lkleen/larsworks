@@ -1,24 +1,14 @@
 <footer class="surface-ground mt-auto">
   <div class="layout-container py-4 flex flex-column align-items-center gap-2">
     <nav class="flex align-items-center gap-4 flex-wrap" aria-label="Legal">
-      <a
-        routerLink="/impressum"
-        class="text-color-secondary no-underline hover:text-primary"
-        i18n="@@footer.impressum"
-        >Impressum</a
-      >
-      <a
-        routerLink="/datenschutz"
-        class="text-color-secondary no-underline hover:text-primary"
-        i18n="@@footer.datenschutz"
-        >Datenschutz</a
-      >
+      <a routerLink="/impressum" class="no-underline" i18n="@@footer.impressum">Impressum</a>
+      <a routerLink="/datenschutz" class="no-underline" i18n="@@footer.datenschutz">Datenschutz</a>
       <a
         (click)="consent.revoke()"
         (keydown.enter)="consent.revoke()"
         role="button"
         tabindex="0"
-        class="text-color-secondary no-underline hover:text-primary cursor-pointer"
+        class="no-underline cursor-pointer"
         i18n="@@footer.cookiePreferences"
         >Cookie-Einstellungen</a
       >

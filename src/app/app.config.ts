@@ -7,6 +7,17 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
+import { definePreset } from '@primeuix/themes';
+
+const AppPreset = definePreset(Aura, {
+  semantic: {
+    // Link tokens — consumed by styles.scss; respects dark mode via colorScheme
+    link: {
+      color: '{text.muted.color}',
+      hoverColor: '{text.color}',
+    },
+  },
+});
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +28,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     providePrimeNG({
       theme: {
-        preset: Aura,
+        preset: AppPreset,
         options: {
           darkModeSelector: '.dark-mode',
         },
