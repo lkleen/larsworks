@@ -1,6 +1,36 @@
 // Global styles — PrimeNG theming handles design tokens, typography, and layout.
 // Only project-level overrides go here.
 
+// ─── Typography design tokens ────────────────────────────────────────────────
+:root {
+  // Font families
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  // Type scale (Major Third — 1.25 ratio)
+  --text-xs: 0.64rem; //  ~10px
+  --text-sm: 0.8rem; //  ~13px
+  --text-base: 1rem; //  16px
+  --text-md: 1.25rem; //  20px
+  --text-lg: 1.563rem; //  25px
+  --text-xl: 1.953rem; //  31px
+  --text-2xl: 2.441rem; //  39px
+  --text-3xl: 3.052rem; //  49px
+
+  // Line heights
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  // Letter spacing
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+}
+
+// ─── Reset & base ────────────────────────────────────────────────────────────
 *,
 *::before,
 *::after {
@@ -9,27 +39,164 @@
 
 html {
   font-size: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-// Markdown content styling (for blog posts rendered via ngx-markdown)
+// ─── Headings ────────────────────────────────────────────────────────────────
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin-block: 0 0.5em;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+h2 {
+  font-size: var(--text-2xl);
+}
+h3 {
+  font-size: var(--text-xl);
+}
+h4 {
+  font-size: var(--text-lg);
+}
+h5 {
+  font-size: var(--text-md);
+}
+h6 {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+// ─── Body copy ───────────────────────────────────────────────────────────────
+p {
+  margin-block: 0 1em;
+  max-width: 70ch; // optimal reading line length
+}
+
+// ─── Inline code & pre ───────────────────────────────────────────────────────
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+// ─── Markdown prose (blog posts rendered via ngx-markdown) ───────────────────
 .markdown-content {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    margin-block: 1.5em 0.5em;
+
+    &:first-child {
+      margin-block-start: 0;
+    }
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+  }
+  h2 {
+    font-size: var(--text-xl);
+  }
+  h3 {
+    font-size: var(--text-lg);
+  }
+  h4 {
+    font-size: var(--text-md);
+  }
+
+  p {
+    margin-block: 0 1.25em;
+    max-width: 70ch;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+  }
+
+  blockquote {
+    margin-inline: 0;
+    padding-inline-start: 1.25em;
+    border-inline-start: 3px solid var(--p-primary-color);
+    font-style: italic;
+    color: var(--p-text-muted-color);
+  }
+
   pre {
     border-radius: var(--p-content-border-radius);
     overflow-x: auto;
-    padding: 1rem;
+    padding: 1rem 1.25rem;
+    line-height: var(--leading-relaxed);
   }
 
   code {
-    font-size: 0.9em;
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+
+  // Inline code (not inside a pre block)
+  :not(pre) > code {
+    padding: 0.15em 0.4em;
+    border-radius: 0.25em;
+    background-color: var(--p-surface-100);
   }
 
   img {
     max-width: 100%;
     height: auto;
+    border-radius: var(--p-content-border-radius);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  th,
+  td {
+    padding: 0.5em 0.75em;
+    border-bottom: 1px solid var(--p-surface-200);
+    text-align: start;
+  }
+
+  th {
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    font-size: var(--text-xs);
   }
 }
