@@ -11,6 +11,7 @@ import { AnalyticsService } from './core/services/analytics';
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CookieBannerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
+  styleUrl: './app.scss',
 })
 export class App {
   private readonly router = inject(Router);
