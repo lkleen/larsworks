@@ -10,11 +10,11 @@ A production-ready Angular personal website for Lars Kleen, starting with a soft
 
 | Layer             | Technology                                 | Reason                                                |
 | ----------------- | ------------------------------------------ | ----------------------------------------------------- |
-| Framework         | Angular 20 (standalone components)         | Latest stable, Signals API stable, SSR-ready          |
+| Framework         | Angular 21 (standalone components)         | Latest stable, Signals API stable, SSR-ready          |
 | Rendering         | Angular SSR                                | SEO, social preview, fast first paint                 |
 | Content           | Markdown files + `ngx-markdown`            | Git-tracked, portable, no vendor lock-in              |
 | i18n              | `@angular/localize`                        | English-only to start, easy to add locales later      |
-| UI Library        | PrimeNG v20                                | 80+ components, large free theme library, responsive  |
+| UI Library        | PrimeNG v21                                | 80+ components, large free theme library, responsive  |
 | Layout            | PrimeFlex                                  | Responsive CSS utilities, pairs natively with PrimeNG |
 | Theming           | PrimeNG Aura (runtime switchable)          | Light/dark switching, no custom design work needed    |
 | Analytics         | GA4 via `gtag()` (no library)              | Lean, direct, Consent Mode v2 compatible              |
@@ -788,7 +788,7 @@ SSR is **required** for social sharing previews (LinkedIn, etc.) and important f
 ng add @angular/ssr
 ```
 
-Angular SSR is built into Angular 20 — no separate `@angular/universal` package needed. The blog post component calls `SeoService.setPostMeta()` in `ngOnInit`, which runs on the server and injects the correct `<meta>` tags into the HTML before it's served.
+Angular SSR is built into Angular 21 — no separate `@angular/universal` package needed. The blog post component calls `SeoService.setPostMeta()` in `ngOnInit`, which runs on the server and injects the correct `<meta>` tags into the HTML before it's served.
 
 ---
 
@@ -821,7 +821,7 @@ git push -u origin main
   ```
   dist/larsworks/browser
   ```
-  (Replace `larsworks` with whatever name you gave in `ng new`. Angular 20 SSR output; Vercel picks up the `server/` folder automatically)
+  (Replace `larsworks` with whatever name you gave in `ng new`. Angular 21 SSR output; Vercel picks up the `server/` folder automatically)
 - Click **Deploy**
 
 From this point on, every `git push origin main` triggers a new deployment automatically.
@@ -1305,7 +1305,7 @@ A `README.md` at the repo root documents everything a contributor (or future-you
 ````markdown
 # larsworks
 
-Personal website for Lars Kleen — software development blog, built with Angular 20, SSR, PrimeNG, and Markdown. Future sections: portfolio, contact, booking.
+Personal website for Lars Kleen — software development blog, built with Angular 21, SSR, PrimeNG, and Markdown. Future sections: portfolio, contact, booking.
 
 **Live:** https://larsworks.de
 
@@ -1373,12 +1373,12 @@ See the architecture blueprint for the full checklist.
 ## Getting Started (Step by Step)
 
 ```bash
-# 1. Create the project (Angular 20)
+# 1. Create the project (Angular 21)
 ng new larsworks --routing --style=scss --ssr
 
-# Upgrade to Angular 20 if ng new scaffolded an earlier version
-ng update @angular/core@20 @angular/cli@20
-ng update @angular/ssr@20
+# Upgrade to Angular 21 if ng new scaffolded an earlier version
+ng update @angular/core@21 @angular/cli@21
+ng update @angular/ssr@21
 
 # 2. Pin Node.js version
 echo "22" > .nvmrc
@@ -1390,8 +1390,8 @@ ng add @angular/localize
 npm install ngx-markdown marked
 npm install -D gray-matter
 
-# 5. Install PrimeNG v20, PrimeFlex and PrimeIcons
-npm install primeng@20 @primeng/themes primeicons primeflex
+# 5. Install PrimeNG v21, PrimeFlex and PrimeIcons
+npm install primeng@21 @primeuix/themes primeicons primeflex
 
 # 6. Add linting (ESLint)
 ng add @angular-eslint/schematics
@@ -1480,9 +1480,9 @@ export const routes: Routes = [
 
 ## Key Architectural Decisions & Rationale
 
-**PrimeNG v20 over Angular Material or custom styling** — PrimeNG provides 80+ production-ready components, the largest free theme library of any Angular UI framework, and PrimeFlex for responsive layout — all without writing custom CSS. Angular Material has fewer themes and a more opinionated Material Design aesthetic. Custom SCSS theming was discarded because it requires design skills and ongoing maintenance. PrimeNG version numbers track Angular major versions, so v20 is the correct match for Angular 20.
+**PrimeNG v21 over Angular Material or custom styling** — PrimeNG provides 80+ production-ready components, the largest free theme library of any Angular UI framework, and PrimeFlex for responsive layout — all without writing custom CSS. Angular Material has fewer themes and a more opinionated Material Design aesthetic. Custom SCSS theming was discarded because it requires design skills and ongoing maintenance. PrimeNG version numbers track Angular major versions, so v21 is the correct match for Angular 21.
 
-**Runtime theme switching via CSS class** — PrimeNG v20's dark mode is toggled by adding/removing a CSS class on `<html>` (configured via `darkModeSelector` in `app.config.ts`). No page reload, no separate stylesheet download — just a single DOM class change that PrimeNG's CSS variables respond to instantly.
+**Runtime theme switching via CSS class** — PrimeNG v21's dark mode is toggled by adding/removing a CSS class on `<html>` (configured via `darkModeSelector` in `app.config.ts`). No page reload, no separate stylesheet download — just a single DOM class change that PrimeNG's CSS variables respond to instantly.
 
 The GA4 measurement ID and blog base URL live in `environment.prod.ts`, not in source code. In development, `ga4MeasurementId` is empty so `AnalyticsService` no-ops silently — no accidental tracking of local sessions. `generate-index.mjs` reads `BASE_URL` from a Vercel environment variable for the same reason.
 
