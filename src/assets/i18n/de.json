@@ -1,4 +1,7 @@
 {
   "header.blog": "Blog",
-  "header.about": "Über mich"
+  "header.about": "Über mich",
+  "footer.impressum": "Impressum",
+  "footer.privacy-policy": "Datenschutz",
+  "footer.cookiePreferences": "Cookie-Einstellungen"
 }
