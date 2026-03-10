@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SelectButton } from 'primeng/selectbutton';
-import { Button } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { LocaleService } from '../../../core/services/locale';
 import { SUPPORTED_LOCALES, SupportedLocale } from '../../../core/models/locale.model';
@@ -10,7 +9,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-locale-switcher',
-  imports: [SelectButton, Button, FormsModule],
+  imports: [SelectButton, FormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './locale-switcher.html',
 })
@@ -40,15 +39,6 @@ export class LocaleSwitcherComponent {
   switchLocale(locale: SupportedLocale): void {
     this.localeService.setSavedLocale(locale);
     const nextUrl = this.localeService.localizeUrl(this.currentUrl(), locale);
-    void this.router.navigateByUrl(nextUrl).then(() => {
-      this.currentUrl.set(this.router.url);
-    });
-  }
-
-  resetLocalePreference(): void {
-    this.localeService.clearSavedLocale();
-    const resolvedLocale = this.localeService.resolveInitialLocale();
-    const nextUrl = this.localeService.localizeUrl(this.currentUrl(), resolvedLocale);
     void this.router.navigateByUrl(nextUrl).then(() => {
       this.currentUrl.set(this.router.url);
     });

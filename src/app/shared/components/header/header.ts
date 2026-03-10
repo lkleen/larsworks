@@ -8,6 +8,7 @@ import { LocaleService } from '../../../core/services/locale';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LocaleSwitcherComponent } from '../locale-switcher/locale-switcher';
+import { TranslationService } from '../../../core/services/translation';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,7 @@ export class HeaderComponent {
   private readonly document = inject(DOCUMENT);
   private readonly router = inject(Router);
   private readonly localeService = inject(LocaleService);
+  private readonly i18n = inject(TranslationService);
 
   darkMode = signal(false);
   private readonly currentUrl = signal(this.router.url);
@@ -31,8 +33,8 @@ export class HeaderComponent {
   readonly homeLink = computed(() => ['/', this.currentLocale()]);
 
   readonly menuItems = computed<MenuItem[]>(() => [
-    { label: 'Blog', routerLink: ['/', this.currentLocale()] },
-    { label: 'About', routerLink: ['/', this.currentLocale(), 'about'] },
+    { label: this.i18n.t('header.blog')(), routerLink: ['/', this.currentLocale()] },
+    { label: this.i18n.t('header.about')(), routerLink: ['/', this.currentLocale(), 'about'] },
   ]);
 
   constructor() {

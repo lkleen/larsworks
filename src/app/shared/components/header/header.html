@@ -1,20 +1,22 @@
-<p-menubar [model]="menuItems()">
-  <ng-template #start>
-    <a [routerLink]="homeLink()" class="font-bold no-underline mr-3" aria-label="Lars Kleen home">
-      Lars Kleen
-    </a>
-  </ng-template>
+<header class="surface-ground">
+  <p-menubar [model]="menuItems()">
+    <ng-template #start>
+      <a [routerLink]="homeLink()" class="font-bold no-underline mr-3" aria-label="Lars Kleen home">
+        Lars Kleen
+      </a>
+    </ng-template>
 
-  <ng-template #end>
-    <div class="flex align-items-center gap-2">
-      <app-locale-switcher />
-      <p-button
-        [icon]="darkMode() ? 'pi pi-sun' : 'pi pi-moon'"
-        [rounded]="true"
-        [text]="true"
-        (onClick)="toggleTheme()"
-        [attr.aria-label]="darkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
-      />
-    </div>
-  </ng-template>
-</p-menubar>
+    <ng-template #end>
+      <div class="flex align-items-center gap-2">
+        <app-locale-switcher />
+        <p-button
+          [icon]="darkMode() ? 'pi pi-sun' : 'pi pi-moon'"
+          [rounded]="true"
+          [text]="true"
+          (onClick)="toggleTheme()"
+          [attr.aria-label]="darkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+        />
+      </div>
+    </ng-template>
+  </p-menubar>
+</header>
