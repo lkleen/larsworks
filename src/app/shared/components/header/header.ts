@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { Button } from 'primeng/button';
+import { Menubar } from 'primeng/menubar';
+import { MenuItem } from 'primeng/api';
 import { DOCUMENT } from '@angular/common';
 import { LocaleService } from '../../../core/services/locale';
 import { filter } from 'rxjs';
@@ -9,7 +11,7 @@ import { LocaleSwitcherComponent } from '../locale-switcher/locale-switcher';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, Button, LocaleSwitcherComponent],
+  imports: [RouterLink, Button, Menubar, LocaleSwitcherComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.html',
   styleUrl: './header.scss',
@@ -22,12 +24,16 @@ export class HeaderComponent {
   darkMode = signal(false);
   private readonly currentUrl = signal(this.router.url);
 
-  readonly currentLocale = computed(() =>
+  private readonly currentLocale = computed(() =>
     this.localeService.currentLocaleFromUrl(this.currentUrl()),
   );
+
   readonly homeLink = computed(() => ['/', this.currentLocale()]);
-  readonly blogLink = computed(() => ['/', this.currentLocale()]);
-  readonly aboutLink = computed(() => ['/', this.currentLocale(), 'about']);
+
+  readonly menuItems = computed<MenuItem[]>(() => [
+    { label: 'Blog', routerLink: ['/', this.currentLocale()] },
+    { label: 'About', routerLink: ['/', this.currentLocale(), 'about'] },
+  ]);
 
   constructor() {
     this.router.events

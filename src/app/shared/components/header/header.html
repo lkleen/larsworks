@@ -1,15 +1,13 @@
-<header class="surface-ground border-bottom-1 surface-border">
-  <div class="layout-container flex align-items-center justify-content-between py-3">
-    <a [routerLink]="homeLink()" class="font-bold no-underline" aria-label="Lars Kleen home"
-      >Lars Kleen</a
-    >
+<p-menubar [model]="menuItems()">
+  <ng-template #start>
+    <a [routerLink]="homeLink()" class="font-bold no-underline mr-3" aria-label="Lars Kleen home">
+      Lars Kleen
+    </a>
+  </ng-template>
 
-    <nav class="flex align-items-center gap-2" aria-label="Main navigation">
-      <a [routerLink]="blogLink()" class="no-underline px-3 py-2" i18n="@@header.blog">Blog</a>
-      <a [routerLink]="aboutLink()" class="no-underline px-3 py-2" i18n="@@header.about">About</a>
-
+  <ng-template #end>
+    <div class="flex align-items-center gap-2">
       <app-locale-switcher />
-
       <p-button
         [icon]="darkMode() ? 'pi pi-sun' : 'pi pi-moon'"
         [rounded]="true"
@@ -17,6 +15,6 @@
         (onClick)="toggleTheme()"
         [attr.aria-label]="darkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
       />
-    </nav>
-  </div>
-</header>
+    </div>
+  </ng-template>
+</p-menubar>
