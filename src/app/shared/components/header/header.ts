@@ -3,13 +3,13 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { Button } from 'primeng/button';
 import { DOCUMENT } from '@angular/common';
 import { LocaleService } from '../../../core/services/locale';
-import { SupportedLocale } from '../../../core/models/locale.model';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { LocaleSwitcherComponent } from '../locale-switcher/locale-switcher';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, Button],
+  imports: [RouterLink, Button, LocaleSwitcherComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.html',
   styleUrl: './header.scss',
@@ -47,24 +47,5 @@ export class HeaderComponent {
     } else {
       element.classList.remove('dark-mode');
     }
-  }
-
-  switchLocale(locale: SupportedLocale): void {
-    this.localeService.setSavedLocale(locale);
-    const nextUrl = this.localeService.localizeUrl(this.currentUrl(), locale);
-    // Force navigation and immediately update currentUrl so computed locale updates
-    void this.router.navigateByUrl(nextUrl).then(() => {
-      this.currentUrl.set(this.router.url);
-    });
-  }
-
-  resetLocalePreference(): void {
-    this.localeService.clearSavedLocale();
-    const resolvedLocale = this.localeService.resolveInitialLocale();
-    const nextUrl = this.localeService.localizeUrl(this.currentUrl(), resolvedLocale);
-    // Force navigation and immediately update currentUrl so computed locale updates
-    void this.router.navigateByUrl(nextUrl).then(() => {
-      this.currentUrl.set(this.router.url);
-    });
   }
 }
