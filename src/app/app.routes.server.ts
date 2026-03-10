@@ -27,14 +27,14 @@ export const serverRoutes: ServerRoute[] = [
     },
   },
   {
-    path: ':locale/impressum',
+    path: ':locale/imprint',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       return localeParams;
     },
   },
   {
-    path: ':locale/datenschutz',
+    path: ':locale/privacy-policy',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       return localeParams;

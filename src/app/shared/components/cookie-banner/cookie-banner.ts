@@ -19,10 +19,10 @@ export class CookieBannerComponent {
   private readonly localeService = inject(LocaleService);
   private readonly currentUrl = signal(this.router.url);
 
-  protected readonly datenschutzLink = computed(() => [
+  protected readonly privacyPolicyLink = computed(() => [
     '/',
     this.localeService.currentLocaleFromUrl(this.currentUrl()),
-    'datenschutz',
+    'privacy-policy',
   ]);
 
   constructor() {

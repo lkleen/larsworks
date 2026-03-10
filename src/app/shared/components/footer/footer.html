@@ -1,8 +1,8 @@
 <footer class="surface-ground mt-auto">
   <div class="layout-container py-4 flex flex-column align-items-center gap-2">
     <nav class="flex align-items-center gap-4 flex-wrap" aria-label="Legal">
-      <a [routerLink]="impressumLink()" class="no-underline">{{ labelImpressum() }}</a>
-      <a [routerLink]="datenschutzLink()" class="no-underline">{{ labelDatenschutz() }}</a>
+      <a [routerLink]="imprintLink()" class="no-underline">{{ labelImprint() }}</a>
+      <a [routerLink]="privacyPolicyLink()" class="no-underline">{{ labelPrivacyPolicy() }}</a>
       <button
         type="button"
         (click)="consent.revoke()"

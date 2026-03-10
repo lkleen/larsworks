@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-impressum',
+  selector: 'app-imprint',
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './impressum.html',
+  templateUrl: './imprint.html',
 })
-export class ImpressumComponent {}
+export class ImprintComponent {}

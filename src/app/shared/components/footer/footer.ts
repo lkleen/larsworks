@@ -24,11 +24,15 @@ export class FooterComponent {
   protected readonly currentLocale = computed(() =>
     this.localeService.currentLocaleFromUrl(this.currentUrl()),
   );
-  protected readonly impressumLink = computed(() => ['/', this.currentLocale(), 'impressum']);
-  protected readonly datenschutzLink = computed(() => ['/', this.currentLocale(), 'datenschutz']);
+  protected readonly imprintLink = computed(() => ['/', this.currentLocale(), 'imprint']);
+  protected readonly privacyPolicyLink = computed(() => [
+    '/',
+    this.currentLocale(),
+    'privacy-policy',
+  ]);
 
-  protected readonly labelImpressum = this.i18n.t('footer.impressum');
-  protected readonly labelDatenschutz = this.i18n.t('footer.privacy-policy');
+  protected readonly labelImprint = this.i18n.t('footer.imprint');
+  protected readonly labelPrivacyPolicy = this.i18n.t('footer.privacyPolicy');
   protected readonly labelCookiePreferences = this.i18n.t('footer.cookiePreferences');
 
   constructor() {

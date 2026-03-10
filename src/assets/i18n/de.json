@@ -1,8 +1,8 @@
 {
   "header.blog": "Blog",
   "header.about": "Über mich",
-  "footer.impressum": "Impressum",
-  "footer.datenschutz": "Datenschutz",
+  "footer.imprint": "Impressum",
+  "footer.privacyPolicy": "Datenschutz",
   "footer.cookiePreferences": "Cookie-Einstellungen",
   "about.title": "Über mich",
   "about.intro": "Hallo, ich bin Lars Kleen — Softwareentwickler aus Deutschland. Ich schreibe über Softwarearchitektur, Angular, TypeScript und Developer Experience.",

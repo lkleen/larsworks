@@ -36,13 +36,13 @@ const localizedRoutes: Routes = [
     loadComponent: () => import('./features/about/about').then((m) => m.AboutComponent),
   },
   {
-    path: 'impressum',
-    loadComponent: () => import('./features/impressum/impressum').then((m) => m.ImpressumComponent),
+    path: 'imprint',
+    loadComponent: () => import('./features/imprint/imprint').then((m) => m.ImprintComponent),
   },
   {
-    path: 'datenschutz',
+    path: 'privacy-policy',
     loadComponent: () =>
-      import('./features/datenschutz/datenschutz').then((m) => m.DatenschutzComponent),
+      import('./features/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicyComponent),
   },
   {
     path: 'not-found',
