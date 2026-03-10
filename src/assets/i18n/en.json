@@ -2,6 +2,9 @@
   "header.blog": "Blog",
   "header.about": "About",
   "footer.impressum": "Impressum",
-  "footer.privacy-policy": "Privacy Policy",
-  "footer.cookiePreferences": "Cookie Settings"
+  "footer.datenschutz": "Datenschutz",
+  "footer.cookiePreferences": "Cookie Settings",
+  "about.title": "About",
+  "about.intro": "Hi, I'm Lars Kleen — a software developer based in Germany. I write about software architecture, Angular, TypeScript, and developer experience.",
+  "about.more": "This site is built with Angular, rendered server-side for fast first paint and proper social sharing previews, and deployed on Vercel. All content lives in Markdown, tracked in Git."
 }
