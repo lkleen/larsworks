@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpInterceptorFn } from '@angular/common/http';
 import { of } from 'rxjs';
@@ -14,6 +14,13 @@ const mockInterceptor: HttpInterceptorFn = () =>
     ).HttpResponse({ body: '' }),
   );
 
+const mockActivatedRoute = {
+  paramMap: of(convertToParamMap({ slug: 'test-slug' })),
+  parent: {
+    paramMap: of(convertToParamMap({ locale: 'en' })),
+  },
+};
+
 describe('BlogPostComponent', () => {
   let component: BlogPostComponent;
   let fixture: ComponentFixture<BlogPostComponent>;
@@ -22,11 +29,7 @@ describe('BlogPostComponent', () => {
     await TestBed.configureTestingModule({
       imports: [BlogPostComponent],
       providers: [
-        provideRouter([
-          { path: 'posts/:slug', component: BlogPostComponent },
-          { path: 'not-found', component: BlogPostComponent },
-          { path: '**', redirectTo: '' },
-        ]),
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
         provideHttpClient(withInterceptors([mockInterceptor])),
       ],
     }).compileComponents();

@@ -5,7 +5,7 @@ import { BlogService } from '../../core/services/blog';
 import { SeoService } from '../../core/services/seo';
 import { SocialShareComponent } from '../../shared/components/social-share/social-share';
 import { BlogPost } from '../../core/models/blog-post.model';
-import { switchMap, tap } from 'rxjs';
+import { combineLatest, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-blog-post',
@@ -21,8 +21,8 @@ export class BlogPostComponent {
   post = signal<BlogPost | null>(null);
   markdownContent = signal<string | null>(null);
 
-  content$ = this.route.paramMap.pipe(
-    switchMap((params) => {
+  content$ = combineLatest([this.route.paramMap, this.route.parent!.paramMap]).pipe(
+    switchMap(([params]) => {
       const slug = params.get('slug')!;
       return this.blogService.getPost(slug).pipe(
         tap((post) => {

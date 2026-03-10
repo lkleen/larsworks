@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComponentRef } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
 import { SocialShareComponent } from './social-share';
 import { BlogPost } from '../../../core/models/blog-post.model';
@@ -23,6 +24,7 @@ describe('SocialShareComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SocialShareComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SocialShareComponent);

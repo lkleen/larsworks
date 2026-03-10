@@ -1,6 +1,28 @@
-import { Routes } from '@angular/router';
+import { CanActivateFn, Router, Routes } from '@angular/router';
+import { inject } from '@angular/core';
+import { LocaleService } from './core/services/locale';
+import { isSupportedLocale } from './core/models/locale.model';
 
-export const routes: Routes = [
+export const redirectToPreferredLocaleGuard: CanActivateFn = (_, state) => {
+  const router = inject(Router);
+  const localeService = inject(LocaleService);
+  const locale = localeService.resolveInitialLocale();
+  return router.parseUrl(localeService.localizeUrl(state.url, locale));
+};
+
+export const supportedLocaleGuard: CanActivateFn = (route, state) => {
+  const locale = route.paramMap.get('locale');
+  if (locale && isSupportedLocale(locale)) {
+    return true;
+  }
+
+  const router = inject(Router);
+  const localeService = inject(LocaleService);
+  const preferredLocale = localeService.resolveInitialLocale();
+  return router.parseUrl(localeService.localizeUrl(state.url, preferredLocale));
+};
+
+const localizedRoutes: Routes = [
   {
     path: '',
     loadComponent: () => import('./features/blog-list/blog-list').then((m) => m.BlogListComponent),
@@ -23,7 +45,36 @@ export const routes: Routes = [
       import('./features/datenschutz/datenschutz').then((m) => m.DatenschutzComponent),
   },
   {
-    path: '**',
+    path: 'not-found',
     loadComponent: () => import('./features/not-found/not-found').then((m) => m.NotFoundComponent),
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
+  },
+];
+
+export const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    canActivate: [redirectToPreferredLocaleGuard],
+    loadComponent: () =>
+      import('./shared/components/locale-redirect/locale-redirect').then(
+        (m) => m.LocaleRedirectComponent,
+      ),
+  },
+  {
+    path: ':locale',
+    canActivate: [supportedLocaleGuard],
+    children: localizedRoutes,
+  },
+  {
+    path: '**',
+    canActivate: [redirectToPreferredLocaleGuard],
+    loadComponent: () =>
+      import('./shared/components/locale-redirect/locale-redirect').then(
+        (m) => m.LocaleRedirectComponent,
+      ),
   },
 ];

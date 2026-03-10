@@ -1,8 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 
 import { BlogListComponent } from './blog-list';
+
+const mockActivatedRoute = {
+  parent: {
+    paramMap: of(convertToParamMap({ locale: 'en' })),
+  },
+};
 
 describe('BlogListComponent', () => {
   let component: BlogListComponent;
@@ -11,7 +18,7 @@ describe('BlogListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BlogListComponent],
-      providers: [provideRouter([]), provideHttpClient()],
+      providers: [{ provide: ActivatedRoute, useValue: mockActivatedRoute }, provideHttpClient()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BlogListComponent);

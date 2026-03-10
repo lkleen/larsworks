@@ -1,16 +1,38 @@
 <header class="surface-ground border-bottom-1 surface-border">
   <div class="layout-container flex align-items-center justify-content-between py-3">
-    <a routerLink="/" class="font-bold no-underline" aria-label="Lars Kleen home">Lars Kleen</a>
+    <a [routerLink]="homeLink()" class="font-bold no-underline" aria-label="Lars Kleen home"
+      >Lars Kleen</a
+    >
 
     <nav class="flex align-items-center gap-2" aria-label="Main navigation">
-      @for (item of menuItems; track item.label) {
-        <a
-          [routerLink]="item.routerLink"
-          class="no-underline px-3 py-2"
-          [attr.aria-label]="item.label"
-          >{{ item.label }}</a
-        >
-      }
+      <a [routerLink]="blogLink()" class="no-underline px-3 py-2" i18n="@@header.blog">Blog</a>
+      <a [routerLink]="aboutLink()" class="no-underline px-3 py-2" i18n="@@header.about">About</a>
+
+      <fieldset class="flex align-items-center gap-1 border-none m-0 p-0">
+        <legend class="sr-only">Language switcher</legend>
+        <p-button
+          label="EN"
+          size="small"
+          [outlined]="currentLocale() !== 'en'"
+          (onClick)="switchLocale('en')"
+          aria-label="Switch language to English"
+        />
+        <p-button
+          label="DE"
+          size="small"
+          [outlined]="currentLocale() !== 'de'"
+          (onClick)="switchLocale('de')"
+          aria-label="Switch language to German"
+        />
+        <p-button
+          icon="pi pi-refresh"
+          size="small"
+          [text]="true"
+          (onClick)="resetLocalePreference()"
+          aria-label="Reset language preference to browser default"
+        />
+      </fieldset>
+
       <p-button
         [icon]="darkMode() ? 'pi pi-sun' : 'pi pi-moon'"
         [rounded]="true"

@@ -6,11 +6,56 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import {
+  DEFAULT_LOCALE,
+  LOCALE_COOKIE_KEY,
+  normalizeToSupportedLocale,
+  pickLocaleFromAcceptLanguage,
+} from './app/core/models/locale.model';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+
+function localeFromCookie(header: string | undefined): string | null {
+  if (!header) return null;
+  const match = header
+    .split(';')
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(`${LOCALE_COOKIE_KEY}=`));
+  if (!match) return null;
+  return normalizeToSupportedLocale(match.split('=')[1]);
+}
+
+function localeFromRequest(req: express.Request): string {
+  const fromCookie = localeFromCookie(req.headers.cookie);
+  if (fromCookie) return fromCookie;
+  return pickLocaleFromAcceptLanguage(req.headers['accept-language']) ?? DEFAULT_LOCALE;
+}
+
+function hasLocalePrefix(pathname: string): boolean {
+  return /^\/(en|de)(\/|$)/.test(pathname);
+}
+
+// Redirect non-localized URLs before static/angular handlers so the first hit lands on /en or /de.
+app.use((req, res, next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    next();
+    return;
+  }
+
+  if (hasLocalePrefix(req.path) || req.path.startsWith('/assets/') || req.path.includes('.')) {
+    next();
+    return;
+  }
+
+  const locale = localeFromRequest(req);
+  const redirectedPath = req.path === '/' ? `/${locale}` : `/${locale}${req.path}`;
+  const location = `${redirectedPath}${req.url.slice(req.path.length)}`;
+
+  res.redirect(302, location);
+});
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -41,9 +86,7 @@ app.use(
 app.use((req, res, next) => {
   angularApp
     .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
+    .then((response) => (response ? writeResponseToNodeResponse(response, res) : next()))
     .catch(next);
 });
 

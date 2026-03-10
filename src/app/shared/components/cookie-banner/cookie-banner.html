@@ -1,7 +1,7 @@
 @if (consent.isPending) {
-  <div
-    class="fixed bottom-0 left-0 right-0 surface-overlay shadow-4 p-4 z-5"
-    role="dialog"
+  <dialog
+    class="fixed bottom-0 left-0 right-0 surface-overlay shadow-4 p-4 z-5 border-none"
+    open
     aria-label="Cookie consent"
   >
     <div
@@ -10,7 +10,7 @@
       <p class="m-0 text-color-secondary" i18n="@@cookie.message">
         This site uses Google Analytics to understand how readers find and use content. No data is
         collected without your consent.
-        <a routerLink="/datenschutz">Datenschutzerklärung</a>
+        <a [routerLink]="datenschutzLink()">Datenschutzerklaerung</a>
       </p>
       <div class="flex gap-2 flex-shrink-0">
         <p-button
@@ -23,5 +23,5 @@
         <p-button label="Accept analytics" (onClick)="accept()" i18n-label="@@cookie.accept" />
       </div>
     </div>
-  </div>
+  </dialog>
 }

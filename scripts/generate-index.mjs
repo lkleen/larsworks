@@ -1,12 +1,13 @@
 // scripts/generate-index.mjs
-// Reads .md frontmatter from each locale folder → writes assets/blog/{locale}/index.json
-// Also generates public/sitemap.xml from the canonical English posts.
-import { readdirSync, readFileSync, writeFileSync, existsSync } from 'fs';
+// Reads .md frontmatter from each locale folder -> writes assets/blog/{locale}/index.json
+// Also generates public/sitemap.xml with locale-prefixed routes and hreflang alternates.
+import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import matter from 'gray-matter';
 
 const LOCALES = ['en', 'de'];
+const DEFAULT_LOCALE = 'en';
 const BASE_URL = process.env['BASE_URL'] ?? 'http://localhost:4200';
-const allPosts = [];
+const postsByLocale = new Map();
 
 for (const locale of LOCALES) {
   const dir = `src/assets/blog/${locale}`;
@@ -28,24 +29,52 @@ for (const locale of LOCALES) {
   writeFileSync(`${dir}/index.json`, JSON.stringify(posts, null, 2));
   console.log(`[${locale}] Generated index.json with ${posts.length} posts`);
 
-  if (locale === 'en') allPosts.push(...posts); // use 'en' as canonical for sitemap
+  postsByLocale.set(locale, posts);
 }
 
-// Sitemap (canonical English URLs)
+const normalize = (value) => value.replace(/\/$/, '');
+const toAbsolute = (path) => `${normalize(BASE_URL)}${path}`;
+
+const staticPaths = ['/', '/about', '/impressum', '/datenschutz'];
+const sitemapUrls = [];
+
+for (const locale of LOCALES) {
+  for (const path of staticPaths) {
+    const localizedPath = `/${locale}${path === '/' ? '' : path}`;
+    sitemapUrls.push(`  <url><loc>${toAbsolute(localizedPath)}</loc></url>`);
+  }
+}
+
+const slugs = new Set();
+for (const locale of LOCALES) {
+  const localePosts = postsByLocale.get(locale) ?? [];
+  for (const post of localePosts) {
+    slugs.add(post.slug);
+  }
+}
+
+for (const slug of slugs) {
+  const canonicalPostPath = `/${DEFAULT_LOCALE}/posts/${slug}`;
+  const canonicalPostUrl = toAbsolute(canonicalPostPath);
+  const alternateLinks = LOCALES.map((locale) => {
+    const localizedPath = `/${locale}/posts/${slug}`;
+    return `    <xhtml:link rel="alternate" hreflang="${locale}" href="${toAbsolute(localizedPath)}" />`;
+  }).join('\n');
+
+  const defaultPost = (postsByLocale.get(DEFAULT_LOCALE) ?? []).find((post) => post.slug === slug);
+  const lastmod = defaultPost?.date;
+  const lastmodTag = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : '';
+
+  sitemapUrls.push(
+    `  <url>\n    <loc>${canonicalPostUrl}</loc>${lastmodTag}\n${alternateLinks}\n  </url>`,
+  );
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${BASE_URL}/</loc></url>
-  <url><loc>${BASE_URL}/about</loc></url>
-${allPosts
-  .map(
-    p => `  <url>
-    <loc>${BASE_URL}/posts/${p.slug}</loc>
-    <lastmod>${p.date}</lastmod>
-  </url>`,
-  )
-  .join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${sitemapUrls.join('\n')}
 </urlset>`;
 
 writeFileSync('public/sitemap.xml', sitemap);
-console.log('Generated sitemap.xml');
-
+console.log('Generated locale-prefixed sitemap.xml');

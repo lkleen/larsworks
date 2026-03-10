@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>http://localhost:4200/</loc></url>
-  <url><loc>http://localhost:4200/about</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>http://localhost:4200/en</loc></url>
+  <url><loc>http://localhost:4200/en/about</loc></url>
+  <url><loc>http://localhost:4200/en/impressum</loc></url>
+  <url><loc>http://localhost:4200/en/datenschutz</loc></url>
+  <url><loc>http://localhost:4200/de</loc></url>
+  <url><loc>http://localhost:4200/de/about</loc></url>
+  <url><loc>http://localhost:4200/de/impressum</loc></url>
+  <url><loc>http://localhost:4200/de/datenschutz</loc></url>
   <url>
-    <loc>http://localhost:4200/posts/angular-signals-practical-guide</loc>
+    <loc>http://localhost:4200/en/posts/angular-signals-practical-guide</loc>
     <lastmod>2026-03-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:4200/en/posts/angular-signals-practical-guide" />
+    <xhtml:link rel="alternate" hreflang="de" href="http://localhost:4200/de/posts/angular-signals-practical-guide" />
   </url>
   <url>
-    <loc>http://localhost:4200/posts/hello-world</loc>
+    <loc>http://localhost:4200/en/posts/hello-world</loc>
     <lastmod>2026-03-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:4200/en/posts/hello-world" />
+    <xhtml:link rel="alternate" hreflang="de" href="http://localhost:4200/de/posts/hello-world" />
   </url>
 </urlset>
