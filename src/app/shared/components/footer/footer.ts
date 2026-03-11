@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 import { ConsentService } from '../../../core/services/consent';
 import { LocaleService } from '../../../core/services/locale';
 import { TranslationService } from '../../../core/services/translation';
@@ -8,7 +9,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink],
+  imports: [ButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.html',
 })
@@ -16,7 +17,7 @@ export class FooterComponent {
   protected readonly consent = inject(ConsentService);
   protected readonly currentYear = new Date().getFullYear();
 
-  private readonly router = inject(Router);
+  protected readonly router = inject(Router);
   private readonly localeService = inject(LocaleService);
   private readonly i18n = inject(TranslationService);
   private readonly currentUrl = signal(this.router.url);

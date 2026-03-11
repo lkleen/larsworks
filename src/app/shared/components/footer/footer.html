@@ -1,15 +1,24 @@
 <footer class="surface-ground mt-auto">
   <div class="layout-container py-4 flex flex-column align-items-center gap-2">
     <nav class="flex align-items-center gap-4 flex-wrap" aria-label="Legal">
-      <a [routerLink]="imprintLink()" class="no-underline">{{ labelImprint() }}</a>
-      <a [routerLink]="privacyPolicyLink()" class="no-underline">{{ labelPrivacyPolicy() }}</a>
-      <button
-        type="button"
-        (click)="consent.revoke()"
-        class="no-underline cursor-pointer p-0 border-none bg-transparent text-color-secondary"
-      >
-        {{ labelCookiePreferences() }}
-      </button>
+      <p-button
+        [label]="labelImprint()"
+        [text]="true"
+        size="small"
+        (onClick)="router.navigate(imprintLink())"
+      />
+      <p-button
+        [label]="labelPrivacyPolicy()"
+        [text]="true"
+        size="small"
+        (onClick)="router.navigate(privacyPolicyLink())"
+      />
+      <p-button
+        [label]="labelCookiePreferences()"
+        [text]="true"
+        size="small"
+        (onClick)="consent.revoke()"
+      />
     </nav>
     <p class="text-color-secondary text-sm m-0">&copy; {{ currentYear }} Lars Kleen</p>
   </div>
