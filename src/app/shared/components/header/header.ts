@@ -37,6 +37,9 @@ export class HeaderComponent {
     { label: this.i18n.t('header.about')(), routerLink: ['/', this.currentLocale(), 'about'] },
   ]);
 
+  protected readonly toggleDarkLabel = this.i18n.t('header.toggleDark');
+  protected readonly toggleLightLabel = this.i18n.t('header.toggleLight');
+
   constructor() {
     this.router.events
       .pipe(

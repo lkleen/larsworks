@@ -15,12 +15,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class FooterComponent {
   protected readonly consent = inject(ConsentService);
-  protected readonly currentYear = new Date().getFullYear();
 
   protected readonly router = inject(Router);
   private readonly localeService = inject(LocaleService);
   private readonly i18n = inject(TranslationService);
   private readonly currentUrl = signal(this.router.url);
+
+  protected readonly currentYear = signal(new Date().getFullYear());
 
   protected readonly currentLocale = computed(() =>
     this.localeService.currentLocaleFromUrl(this.currentUrl()),

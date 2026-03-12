@@ -1,10 +1,22 @@
 {
   "header.blog": "Blog",
   "header.about": "About",
+  "header.toggleDark": "Switch to dark mode",
+  "header.toggleLight": "Switch to light mode",
   "footer.imprint": "Imprint",
   "footer.privacyPolicy": "Privacy Policy",
   "footer.cookiePreferences": "Cookie Settings",
   "about.title": "About",
   "about.intro": "Hi, I'm Lars Kleen — a software developer based in Germany. I write about software architecture, Angular, TypeScript, and developer experience.",
-  "about.more": "This site is built with Angular, rendered server-side for fast first paint and proper social sharing previews, and deployed on Vercel. All content lives in Markdown, tracked in Git."
+  "about.more": "This site is built with Angular, rendered server-side for fast first paint and proper social sharing previews, and deployed on Vercel. All content lives in Markdown, tracked in Git.",
+  "home.title": "Latest Posts",
+  "notFound.title": "Page not found",
+  "notFound.message": "The page you're looking for doesn't exist.",
+  "notFound.backHome": "← Back to home",
+  "cookie.message": "This site uses Google Analytics to understand how readers find and use content. No data is collected without your consent.",
+  "cookie.privacyPolicy": "Privacy Policy",
+  "cookie.decline": "Decline",
+  "cookie.accept": "Accept analytics",
+  "social.linkedin": "Share on LinkedIn",
+  "social.twitter": "Share on X"
 }

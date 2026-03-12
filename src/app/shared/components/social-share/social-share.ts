@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input, inject } from '@an
 import { BlogPost } from '../../../core/models/blog-post.model';
 import { environment } from '../../../../environments/environment';
 import { LocaleService } from '../../../core/services/locale';
+import { TranslationService } from '../../../core/services/translation';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,6 +16,10 @@ export class SocialShareComponent {
 
   private readonly localeService = inject(LocaleService);
   private readonly router = inject(Router);
+  private readonly i18n = inject(TranslationService);
+
+  protected readonly labelLinkedin = this.i18n.t('social.linkedin');
+  protected readonly labelTwitter = this.i18n.t('social.twitter');
 
   private readonly postUrl = computed(() => {
     const locale = this.localeService.currentLocaleFromUrl(this.router.url);

@@ -7,20 +7,18 @@
     <div
       class="flex flex-column md:flex-row align-items-center justify-content-between gap-3 layout-container"
     >
-      <p class="m-0 text-color-secondary" i18n="@@cookie.message">
-        This site uses Google Analytics to understand how readers find and use content. No data is
-        collected without your consent.
-        <a [routerLink]="privacyPolicyLink()">Datenschutzerklaerung</a>
+      <p class="m-0 text-color-secondary">
+        {{ cookieMessage() }}
+        <a [routerLink]="privacyPolicyLink()">{{ cookiePrivacyPolicy() }}</a>
       </p>
       <div class="flex gap-2 flex-shrink-0">
         <p-button
-          label="Decline"
+          [label]="cookieDecline()"
           [outlined]="true"
           severity="secondary"
           (onClick)="decline()"
-          i18n-label="@@cookie.decline"
         />
-        <p-button label="Accept analytics" (onClick)="accept()" i18n-label="@@cookie.accept" />
+        <p-button [label]="cookieAccept()" (onClick)="accept()" />
       </div>
     </div>
   </dialog>

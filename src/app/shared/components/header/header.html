@@ -14,7 +14,7 @@
           [rounded]="true"
           [text]="true"
           (onClick)="toggleTheme()"
-          [attr.aria-label]="darkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+          [attr.aria-label]="darkMode() ? toggleLightLabel() : toggleDarkLabel()"
         />
       </div>
     </ng-template>

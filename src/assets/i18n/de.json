@@ -1,10 +1,22 @@
 {
   "header.blog": "Blog",
   "header.about": "Über mich",
+  "header.toggleDark": "Dunkelmodus aktivieren",
+  "header.toggleLight": "Hellmodus aktivieren",
   "footer.imprint": "Impressum",
   "footer.privacyPolicy": "Datenschutz",
   "footer.cookiePreferences": "Cookie-Einstellungen",
   "about.title": "Über mich",
   "about.intro": "Hallo, ich bin Lars Kleen — Softwareentwickler aus Deutschland. Ich schreibe über Softwarearchitektur, Angular, TypeScript und Developer Experience.",
-  "about.more": "Diese Seite wurde mit Angular entwickelt, wird serverseitig gerendert für schnelles erstes Laden und korrekte Social-Sharing-Vorschauen und ist auf Vercel gehostet. Alle Inhalte liegen als Markdown vor und werden in Git versioniert."
+  "about.more": "Diese Seite wurde mit Angular entwickelt, wird serverseitig gerendert für schnelles erstes Laden und korrekte Social-Sharing-Vorschauen und ist auf Vercel gehostet. Alle Inhalte liegen als Markdown vor und werden in Git versioniert.",
+  "home.title": "Neueste Beiträge",
+  "notFound.title": "Seite nicht gefunden",
+  "notFound.message": "Die gesuchte Seite existiert nicht.",
+  "notFound.backHome": "← Zurück zur Startseite",
+  "cookie.message": "Diese Seite verwendet Google Analytics, um zu verstehen, wie Leser Inhalte finden und nutzen. Ohne Ihre Zustimmung werden keine Daten erfasst.",
+  "cookie.privacyPolicy": "Datenschutzerklärung",
+  "cookie.decline": "Ablehnen",
+  "cookie.accept": "Analyse zustimmen",
+  "social.linkedin": "Auf LinkedIn teilen",
+  "social.twitter": "Auf X teilen"
 }
