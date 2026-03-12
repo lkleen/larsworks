@@ -28,13 +28,13 @@ From the first idea to writing my first actual blog post it was less than 10 hou
 the research and code writing the conventional way, it would have taken me something like 50–60 hours. And I suspect
 even that is optimistic.
 
-So what will happen next? For one, those 10 hours will shrink further. AI still struggles to understand the
+So what will happen next? For one, those 10 hours will shrink further. Currently, AI still struggles to understand the
 structure of a project as a whole. Even when I repeatedly point to the initially created architecture document, it tends
 to go off-script. Just like real human developers. It is obvious that it struggles with
 complexity which involves many layers of abstraction. That is ultimately the time-consuming part — the code itself is generated
 in no time. Often it works correctly within the scope it can currently see, but it still takes a lot of my
 attention to keep it on track — repeating the same guidance over and over. And the more you use it, the more you
-notice it isn't learning. It keeps the context of the current chat but in the end you have to tell it exactly the
+notice it isn't learning. It barely keeps the context of the current chat and in the end you have to tell it exactly the
 same things over and over again. That is the difference from a mature engineering team or my 3-year-old daughter.
 They retain and adapt. That said, if AI quality continues to improve at its current pace for just a few more years,
 it will make substantial software products — well beyond a simple project like this one — feasible for a single person
