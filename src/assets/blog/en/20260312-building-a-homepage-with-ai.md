@@ -1,6 +1,6 @@
 ---
 title: 'Building a Homepage with AI'
-slug: building-a-homepage-with-ai
+slug: 20260312-building-a-homepage-with-ai
 date: 2026-03-12
 author: Lars Kleen
 lang: en
